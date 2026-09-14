@@ -1,0 +1,25 @@
+:root{--w:375;--h:812}
+.home-page{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#0b66d6;display:grid;place-items:center;padding:16px;overflow:auto}
+.home-page .phone{position:relative;width:min(calc(100vw - 24px),375px);aspect-ratio:375/812;border-radius:22px;overflow:hidden;background:#1892ff;box-shadow:0 20px 70px rgba(0,0,0,.35)}
+.home-page .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.home-page .topbar{position:absolute;left:0;top:0;width:100%;height:13%;display:flex;align-items:center;justify-content:space-between;padding:4.5% 4.2% 0;z-index:9}
+.home-page .round-btn{width:42px;height:42px;border:0;background:transparent;padding:0;cursor:pointer;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
+.home-page .round-btn img{width:100%;height:100%;object-fit:contain}
+.home-page .logo{width:145px;height:34px;object-fit:contain}
+.home-page .title{position:absolute;left:50%;top:13.2%;transform:translateX(-50%);width:74.7%;z-index:2}
+.home-page .decor{position:absolute;left:-6.5%;top:32.8%;width:113.2%;z-index:5;pointer-events:none}
+.home-page .wheel-wrap{position:absolute;left:8.4%;top:30%;width:83.7%;aspect-ratio:1;z-index:4}
+.home-page .wheel{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:rotate(0deg);transition:transform 4.6s cubic-bezier(.12,.72,.05,1);will-change:transform;backface-visibility:hidden;transform-origin:50% 50%}
+.home-page .pointer{position:absolute;left:45.25%;top:-.5%;width:9.9%;height:16.5%;object-fit:fill;z-index:3;pointer-events:none;transform-origin:50% 8%}
+.home-page .pointer.ticking{animation:homePointerTick .12s ease-in-out infinite alternate}
+@keyframes homePointerTick{from{transform:rotate(-5deg)}to{transform:rotate(4deg)}}
+.home-page .spin-area{position:absolute;left:26.6%;top:79.1%;width:46.4%;height:9.4%;z-index:10;cursor:pointer;user-select:none}
+.home-page .spin-img{position:absolute;left:0;right:0;bottom:0;width:95.4%;height:75%;object-fit:fill}
+.home-page .spin-area:active .spin-img{transform:scale(.97)}
+.home-page .badge{position:absolute;right:0;top:0;width:42px;height:42px;border-radius:50%;background:#c30000;border:2px solid #f3b0b0;color:#fff;font-weight:800;font-size:18px;display:grid;place-items:center;box-shadow:0 2px 5px rgba(0,0,0,.25)}
+.home-page .navs{position:absolute;left:7.2%;right:7.2%;bottom:4.45%;height:34px;display:flex;gap:12px;z-index:10}
+.home-page .pill{flex:1;border:0;border-radius:999px;color:#fff;font-size:16px;cursor:pointer;background:linear-gradient(#0f7be8,#0956bb);box-shadow:inset 0 0 0 2px #ffd431,0 2px 0 #0a3f96;white-space:nowrap}
+.home-page .pill:active{transform:translateY(1px)}
+.home-page .home-indicator{position:absolute;left:50%;bottom:1.1%;transform:translateX(-50%);width:36%;height:5px;border-radius:999px;background:#fff;z-index:11}
+.home-page .status{position:absolute;top:2.5%;left:6.5%;color:#fff;font-size:16px;font-weight:700;z-index:10}
+@media(max-width:420px){.home-page{padding:0}.home-page .phone{width:100vw;height:100vh;max-height:calc(100vw * 812 / 375);border-radius:0}}
