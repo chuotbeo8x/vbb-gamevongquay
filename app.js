@@ -1,1 +1,59 @@
-(()=>{const q=s=>document.querySelector(s);document.addEventListener('click',e=>{const el=e.target.closest('[data-href]');if(el)location.href=el.dataset.href});window.VBB={loading(){setTimeout(()=>location.href='home.html',2500)},home(){const spin=q('#spinHot'),wheel=q('#wheelSpin'),wheelImage=q('.wheel-image'),pointer=q('#wheelPointer'),lock=q('#spinLock');let spinning=false;const order=['result-win.html','result-lucky-1.html','result-lucky-2.html','out-of-spins.html'];const sleep=ms=>new Promise(r=>setTimeout(r,ms));spin.addEventListener('click',async()=>{if(spinning)return;spinning=true;const i=Number(sessionStorage.getItem('vbbDemoResult')||0);const target=order[i%order.length];sessionStorage.setItem('vbbDemoResult',String(i+1));lock.classList.add('active');wheel.classList.add('active');pointer.classList.add('ticking');pointer.style.animationDuration='.09s';wheelImage.getAnimations().forEach(a=>a.cancel());wheelImage.style.transform='translateZ(0) rotate(0deg)';await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));const degrees=2520+45+(i%8)*45;const motion=wheelImage.animate([{transform:'translateZ(0) rotate(0deg)'},{transform:`translateZ(0) rotate(${degrees}deg)`}],{duration:3600,easing:'cubic-bezier(.10,.68,.12,1)',fill:'forwards'});setTimeout(()=>{pointer.style.animationDuration='.14s'},2200);setTimeout(()=>{pointer.style.animationDuration='.22s'},2950);await motion.finished;pointer.classList.remove('ticking');pointer.style.animationDuration='';await sleep(180);location.href=target})}}})();
+(()=>{
+  const q=s=>document.querySelector(s);
+  document.addEventListener('click',e=>{
+    const el=e.target.closest('[data-href]');
+    if(el) location.href=el.dataset.href;
+  });
+
+  window.VBB={
+    loading(){
+      setTimeout(()=>location.href='home.html',2500);
+    },
+    home(){
+      const wheel=q('#wheel');
+      const pointer=q('#wheelPointer');
+      const spinBtn=q('#spinBtn');
+      const turns=q('#turns');
+      const back=q('#backBtn');
+      let spinning=false;
+      let rotation=0;
+      let count=Number(sessionStorage.getItem('vbbTurns')||99);
+      turns.textContent=count;
+
+      const resultForIndex=index=>{
+        if(index===1) return 'result-lucky-1.html';
+        if(index===5) return 'result-lucky-2.html';
+        return 'result-win.html';
+      };
+
+      function spin(){
+        if(spinning) return;
+        if(count<=0){ location.href='out-of-spins.html'; return; }
+        spinning=true;
+        count--;
+        sessionStorage.setItem('vbbTurns',String(count));
+        turns.textContent=count;
+
+        const index=Math.floor(Math.random()*8);
+        const segment=360/8;
+        const target=360-(index*segment+segment/2);
+        rotation+=360*6+target;
+
+        pointer.classList.add('ticking');
+        wheel.style.transform=`rotate(${rotation}deg)`;
+
+        setTimeout(()=>pointer.classList.remove('ticking'),4300);
+        setTimeout(()=>{
+          spinning=false;
+          location.href=resultForIndex(index);
+        },4700);
+      }
+
+      spinBtn.addEventListener('click',spin);
+      spinBtn.addEventListener('keydown',e=>{
+        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); spin(); }
+      });
+      if(back) back.addEventListener('click',()=>history.length>1?history.back():location.assign('index.html'));
+    }
+  };
+})();
