@@ -1,1 +1,45 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>VBB Game – Home</title><link rel="stylesheet" href="styles.css"></head><body><main class="phone"><img class="screen-shot" src="assets/fe4d0f7b-71bc-4d17-898b-0817467eae66.png" alt="Trang chủ vòng quay"><div class="wheel-spin" id="wheelSpin"><img class="wheel-image" src="assets/0e1833da-0211-46ce-b05a-c96d5f7c6524.png" alt=""></div><img class="wheel-pointer" id="wheelPointer" src="assets/58fdea9d-9b7d-4155-917a-27163f13cb7f.png" alt=""><div class="spin-lock" id="spinLock"></div><button class="hotspot" style="left:99px;top:647px;width:176px;height:78px" id="spinHot" aria-label="Quay"></button><button class="hotspot" style="left:26px;top:741px;width:101px;height:38px" data-href="rules.html" aria-label="Thể lệ"></button><button class="hotspot" style="left:137px;top:741px;width:101px;height:38px" data-href="missions.html" aria-label="Thêm lượt"></button><button class="hotspot" style="left:248px;top:741px;width:101px;height:38px" data-href="gifts.html" aria-label="Túi quà"></button></main><script src="app.js"></script><script>VBB.home()</script></body></html>
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>VBB Game Vòng Quay 2026 – Home</title>
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="home.css" />
+</head>
+<body class="home-page">
+<div class="phone" id="app">
+  <img class="bg" src="https://www.figma.com/api/mcp/asset/8849024c-8009-4451-979d-908db89f4e67.png" alt="" />
+  <div class="status">9:41</div>
+
+  <div class="topbar">
+    <button class="round-btn" id="backBtn" aria-label="Quay lại"><img src="https://www.figma.com/api/mcp/asset/eb346bd6-763e-4a0a-8417-823a471b9103.png" alt="" /></button>
+    <img class="logo" src="https://www.figma.com/api/mcp/asset/fd5b6bdd-1aeb-41ff-90ed-fa9f2e87790f.svg" alt="VietBank" />
+    <button class="round-btn" aria-label="Âm thanh"><img src="https://www.figma.com/api/mcp/asset/4997f3c6-531d-4772-8a3f-797dc25151c0.png" alt="" /></button>
+  </div>
+
+  <img class="title" src="https://www.figma.com/api/mcp/asset/7848e6a0-a722-42cf-940d-0b281f6676ec.png" alt="Tích lũy vui vui vi vu" />
+
+  <div class="wheel-wrap">
+    <img id="wheel" class="wheel" src="https://www.figma.com/api/mcp/asset/22d4b692-1489-45ee-80b5-8a78df3363ee.png" alt="Vòng quay" />
+    <img id="wheelPointer" class="pointer" src="https://www.figma.com/api/mcp/asset/ac4fe072-918e-493c-904e-bb53ae4f97a8.png" alt="" />
+  </div>
+
+  <img class="decor" src="https://www.figma.com/api/mcp/asset/23982048-17a3-4198-960e-f7fd41fd64b2.png" alt="" />
+
+  <div class="spin-area" id="spinBtn" role="button" tabindex="0" aria-label="Quay">
+    <img class="spin-img" src="https://www.figma.com/api/mcp/asset/53e21bf8-f8d7-4a16-9c43-d222d020ccfc.png" alt="Quay" />
+    <div class="badge" id="turns">99</div>
+  </div>
+
+  <div class="navs">
+    <button class="pill" data-href="rules.html">Thể lệ</button>
+    <button class="pill" data-href="missions.html">Thêm lượt</button>
+    <button class="pill" data-href="gifts.html">Túi quà</button>
+  </div>
+  <div class="home-indicator"></div>
+</div>
+<script src="app.js"></script>
+<script>VBB.home()</script>
+</body>
+</html>
