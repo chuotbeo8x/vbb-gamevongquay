@@ -1,0 +1,33 @@
+name: Localize Figma assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - index.html
+      - scripts/localize_assets.py
+      - .github/workflows/localize-assets.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  localize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Figma assets and rewrite HTML
+        run: python3 scripts/localize_assets.py
+      - name: Commit localized assets
+        shell: bash
+        run: |
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets scripts/localize_assets.py
+          git commit -m "Localize Figma assets"
+          git push
