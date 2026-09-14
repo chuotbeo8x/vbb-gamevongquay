@@ -7,7 +7,8 @@
 .home-page .round-btn img{width:100%;height:100%;object-fit:contain}
 .home-page .logo{width:145px;height:34px;object-fit:contain}
 .home-page .title{position:absolute;left:50%;top:13.2%;transform:translateX(-50%);width:74.7%;z-index:2}
-.home-page .decor{position:absolute;left:-6.5%;top:32.8%;width:113.2%;z-index:5;pointer-events:none}
+.home-page .decor{position:absolute;left:-6.5%;top:32.8%;width:113.2%;z-index:5;pointer-events:none;transform-origin:50% 58%;will-change:transform;animation:homeDecorFloat 3.8s ease-in-out infinite alternate}
+@keyframes homeDecorFloat{0%{transform:translate3d(0,0,0) scale(1) rotate(-.25deg)}55%{transform:translate3d(0,-3px,0) scale(1.006) rotate(.15deg)}100%{transform:translate3d(0,2px,0) scale(1.012) rotate(.35deg)}}
 .home-page .wheel-wrap{position:absolute;left:8.4%;top:30%;width:83.7%;aspect-ratio:1;z-index:4}
 .home-page .wheel{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transform:rotate(0deg);transition:transform 4.6s cubic-bezier(.12,.72,.05,1);will-change:transform;backface-visibility:hidden;transform-origin:50% 50%}
 .home-page .pointer{position:absolute;left:45.25%;top:-.5%;width:9.9%;height:16.5%;object-fit:fill;z-index:3;pointer-events:none;transform-origin:50% 8%}
@@ -33,4 +34,5 @@
 .home-page .result-close:active{transform:translateX(-50%) scale(.94)}
 @keyframes resultIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
 
+@media(prefers-reduced-motion:reduce){.home-page .decor{animation:none}}
 @media(max-width:420px){.home-page{padding:0}.home-page .phone{width:100vw;height:100vh;max-height:calc(100vw * 812 / 375);border-radius:0}.home-page .result-card{width:86%}}
