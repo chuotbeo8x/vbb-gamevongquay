@@ -1,1 +1,29 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>VBB Game – Loading</title><link rel="stylesheet" href="styles.css"></head><body><main class="phone"><img class="screen-shot" src="assets/49426d3c-2ff6-49af-b1f3-80d722d7ff82.png" alt="Loading"><div class="loading-bar"><span></span></div></main><script src="app.js"></script><script>VBB.loading()</script></body></html>
+<!doctype html>
+<html lang="vi">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+        <title>VBB Game – Loading</title>
+        <link rel="stylesheet" href="styles.css?v=20260915_loading_fix">
+    </head>
+
+    <body>
+        <main class="phone phone-home">
+            <div class="topbar">
+                <button class="round-btn" id="backBtn" aria-label="Quay lại"><img src="assets/ic-back.svg" alt="" /></button>
+                <img class="logo" src="assets/logo-vietbank.svg" alt="VietBank" />
+                <div></div>
+                <!--<button class="round-btn" id="soundBtn" aria-label="Âm thanh"><img id="soundIcon" src="assets/ic-speak.svg" alt="" /></button>-->
+            </div>
+            <div class="loading-bar-wrap">
+                <div class="loading-text">Loading...</div>
+                <div class="loading-bar"><span></span></div>
+            </div>
+        </main>
+        <audio id="bgmAudio" src="assets/nhacnen.mp3" loop preload="auto" playsinline autoplay></audio>
+        <script src="app.js?v=20260915_audio7"></script>
+        <script>VBB.loading()</script>
+    </body>
+
+</html>
